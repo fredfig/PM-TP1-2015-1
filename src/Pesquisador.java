@@ -5,13 +5,15 @@ public class Pesquisador {
 
 	private static int numPesquisadores = 0;
 	
-	private int idPesquisador;
-	private int horaIniciacaoCientifica = 0;
-	private int horaEstagioDocencia = 0;
+	protected int idPesquisador;
+	protected int horaIniciacaoCientifica = 0;
+	protected int horaEstagioDocencia = 0;
 	
 	private Hashtable<Integer, Integer> artigoAutoria;
+	private ArrayList<Artigo> listaArtigos;
     
 	public Pesquisador(int id, int horasIC, int horasED) {
+		listaArtigos = new ArrayList<Artigo>();
 		artigoAutoria = new Hashtable<Integer, Integer>();
 		numPesquisadores++;
 		this.idPesquisador = id;
@@ -46,18 +48,22 @@ public class Pesquisador {
 		return this.horaEstagioDocencia;
 	}
 	
+	public void addArtigo(Artigo a){
+		this.listaArtigos.add(a);
+	}
+	
 	public void addArtigoAutoria(int idArtigo, int ordemAutoria){
-		artigoAutoria.put(idArtigo, ordemAutoria);
+		this.artigoAutoria.put(idArtigo, ordemAutoria);
 	}
 
 	public void imprimeArtigoAutoria(){
-		for (Integer artigo : artigoAutoria.keySet()) {
-			System.out.println(artigo + " " + artigoAutoria.get(artigo));
+		for (Integer artigo : this.artigoAutoria.keySet()) {
+			System.out.println(artigo + " " + this.artigoAutoria.get(artigo));
 		}
 	}
 	
 	public int artigosPublicados(){
-		return artigoAutoria.size();
+		return listaArtigos.size();
 	}
 	
 	// Retorna o pesquisador com um id específico a partir de um array de pesquisadores
@@ -69,6 +75,39 @@ public class Pesquisador {
 			}
 		}
 		return pesquisador;
+	}
+	
+	// Calcular peso de importância do pesquisador
+	// Na documentação é referenciado como w(p)
+	public double calculaPesoImportancia(){
+		double pesoImportancia=0.0;
+		
+		for (Integer artigo : artigoAutoria.keySet()) {
+			pesoImportancia += 1/(double)artigoAutoria.get(artigo);
+		}
+		
+		return pesoImportancia;
+	}
+	
+	// Calcula o número de vezes que os artigos do pesquisador foram citados
+	public int totalCitacoes(){
+		int citacoes=0;
+
+		for (Artigo a : this.listaArtigos) {
+			citacoes+=a.getCitacoes();
+		}
+		return citacoes;
+		
+	}
+	
+	// Calcula popularidade do pesquisador
+	public double calculaPopularidade(){
+		double popularidade=0.0;
+		
+		popularidade = calculaPesoImportancia() + (double)totalCitacoes() + (double)artigosPublicados();
+		
+		return popularidade;
+	
 	}
 	
 }

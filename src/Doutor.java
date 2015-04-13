@@ -33,12 +33,29 @@ public class Doutor extends Pesquisador {
 	public int getGradOrient() {	
 		return this.numGradOrient;
 	}
+	
 	public int getMestOrient() {	
 		return this.numMestreOrient;
 	}
+	
 	public int getDoutOrient() {	
 		return this.numDoutorOrient;
 	}
+
+	// Calcula popularidade do graduado
+	@Override
+	public double calculaPopularidade(){
+		double popularidade=0.0;
+		
+		popularidade = super.calculaPopularidade() 
+					 + (double)this.horaIniciacaoCientifica 
+					 + (double)this.horaEstagioDocencia 
+					 + (double)10*this.numGradOrient
+					 + (double)20*this.numMestreOrient
+					 + (double)30*this.numDoutorOrient;
+		
+		return popularidade;
 	
+	}
 	
 }

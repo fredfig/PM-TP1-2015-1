@@ -20,4 +20,18 @@ public class Mestre extends Pesquisador {
 	public int getGradOrient(){
 		return this.numGradOrient;
 	}
+
+	// Calcula popularidade do graduado
+	@Override
+	public double calculaPopularidade(){
+		double popularidade=0.0;
+		
+		popularidade = super.calculaPopularidade() 
+					 + (double)this.horaIniciacaoCientifica 
+					 + (double)this.horaEstagioDocencia 
+					 + (double)10*this.numGradOrient;
+		
+		return popularidade;
+	
+	}
 }
