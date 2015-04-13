@@ -11,10 +11,12 @@ public class Entrada {
 			ArrayList<VeiculoPublicacao> leiaVP = leituraVeiculoPublicacaoEntrada();
 			ArrayList<Artigo> leiaA = leituraArtigosEntrada(leiaVP);
 			leituraArtigoPesquisadorEntrada(leiaP);
+			leituraArtigosCitacoesEntrada(leiaA);
 			
-			for (Pesquisador pesquisador : leiaP) {
-				System.out.println(pesquisador.getIdPesquisador());
-				System.out.println(pesquisador.artigosPublicados());
+			for (Artigo a: leiaA) {
+				System.out.println(a.getIdArtigo());
+				System.out.println(a.getCitacoes());
+				System.out.println("\n");
 			}
 			
 		} catch (IOException e) {
@@ -166,6 +168,34 @@ public class Entrada {
 				Pesquisador p = Pesquisador.getPesquisador(listaP, Integer.parseInt(pesq[1]));
 				// Adiciona ao veículo de publicação o artigo 
 				p.addArtigoAutoria(Integer.parseInt(pesq[0]), Integer.parseInt(pesq[2]));
+			
+			}
+			in.close();
+		} catch(IOException e) {
+			System.out.println(e);
+		}
+		
+		
+	}
+
+
+	// Metodo que faz a leitura dos Artigos e suas citações
+	// Cada artigo é citado por outro artigo.
+	// Retorna vazio
+	public static void leituraArtigosCitacoesEntrada(ArrayList<Artigo> listaA) throws IOException {
+
+		try {
+			BufferedReader in = new BufferedReader(new FileReader("entrada/grafo_citacoes.txt"));
+			String read;
+			System.out.println("Lendo artigos e suas citações...");
+			System.out.println("Incrementando contador de citações de cada artigo...");
+			while ((read = in.readLine()) != null){
+				//System.out.println("Linha: " + read);
+				String[] pesq = read.split(";", 2);
+				// Busca artigo que é citado
+				Artigo a = Artigo.getArtigo(listaA, Integer.parseInt(pesq[0]));
+				// Adiciona ao artigo uma citação
+				a.addCitacao();
 			
 			}
 			in.close();
