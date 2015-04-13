@@ -7,16 +7,15 @@ public class Entrada {
 	
 	public static void main(String[] args) {
 		try {
-			ArrayList<Pesquisador> leia = leituraPesquisadoresEntrada();
-//			for (Pesquisador pesquisador : leia) {
-//				pesquisador.imprimePesquisador();
-//			}
+			ArrayList<Pesquisador> leiaP = leituraPesquisadoresEntrada();
 			ArrayList<VeiculoPublicacao> leiaVP = leituraVeiculoPublicacaoEntrada();
 			ArrayList<Artigo> leiaA = leituraArtigosEntrada(leiaVP);
-//
-//			for (VeiculoPublicacao vp : leiaVP) {
-//				vp.imprimeVeiculoPublicacao();
-//			}
+			leituraArtigoPesquisadorEntrada(leiaP);
+			
+			for (Pesquisador pesquisador : leiaP) {
+				System.out.println(pesquisador.getIdPesquisador());
+				System.out.println(pesquisador.artigosPublicados());
+			}
 			
 		} catch (IOException e) {
 			System.out.println(e);
@@ -147,6 +146,33 @@ public class Entrada {
 		}
 		
 		return listaA;
+		
+	}
+
+	// Metodo que faz a leitura dos Artigos relacionado ao pesquisador.
+	// Cada artigo indica qual é o autor do artigo e sua ordem de autoria
+	// Retorna vazio
+	public static void leituraArtigoPesquisadorEntrada(ArrayList<Pesquisador> listaP) throws IOException {
+
+		try {
+			BufferedReader in = new BufferedReader(new FileReader("entrada/grafo_artigos_pesquisadores.txt"));
+			String read;
+			System.out.println("Lendo artigos x pesquisadores...");
+			System.out.println("Associando artigos aos pesquisadores considerando ordem de autoria...");
+			while ((read = in.readLine()) != null){
+				//System.out.println("Linha: " + read);
+				String[] pesq = read.split(";", 3);
+				// Busca pesquisador que é autor deste artigo
+				Pesquisador p = Pesquisador.getPesquisador(listaP, Integer.parseInt(pesq[1]));
+				// Adiciona ao veículo de publicação o artigo 
+				p.addArtigoAutoria(Integer.parseInt(pesq[0]), Integer.parseInt(pesq[2]));
+			
+			}
+			in.close();
+		} catch(IOException e) {
+			System.out.println(e);
+		}
+		
 		
 	}
 

@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Hashtable;
+
 public class Pesquisador { 
 
 	private static int numPesquisadores = 0;
@@ -6,9 +9,10 @@ public class Pesquisador {
 	private int horaIniciacaoCientifica = 0;
 	private int horaEstagioDocencia = 0;
 	
-	private Artigo[] artigos;
-	
+	private Hashtable<Integer, Integer> artigoAutoria;
+    
 	public Pesquisador(int id, int horasIC, int horasED) {
+		artigoAutoria = new Hashtable<Integer, Integer>();
 		numPesquisadores++;
 		this.idPesquisador = id;
 		this.setHoraIniciacaoCientifica(horasIC);
@@ -33,11 +37,38 @@ public class Pesquisador {
 	public int getIdPesquisador(){
 		return this.idPesquisador;
 	}
+	
 	public int getHorasIC(){
 		return this.horaIniciacaoCientifica;
 	}
+	
 	public int getHorasED(){
 		return this.horaEstagioDocencia;
+	}
+	
+	public void addArtigoAutoria(int idArtigo, int ordemAutoria){
+		artigoAutoria.put(idArtigo, ordemAutoria);
+	}
+
+	public void imprimeArtigoAutoria(){
+		for (Integer artigo : artigoAutoria.keySet()) {
+			System.out.println(artigo + " " + artigoAutoria.get(artigo));
+		}
+	}
+	
+	public int artigosPublicados(){
+		return artigoAutoria.size();
+	}
+	
+	// Retorna o pesquisador com um id espec’fico a partir de um array de pesquisadores
+	public static Pesquisador getPesquisador(ArrayList<Pesquisador> listaP, int idPesquisador){
+		Pesquisador pesquisador = null;
+		for (Pesquisador p : listaP) {
+			if (p.getIdPesquisador()==idPesquisador){
+				pesquisador = p;
+			}
+		}
+		return pesquisador;
 	}
 	
 }
