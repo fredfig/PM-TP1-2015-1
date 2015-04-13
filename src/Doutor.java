@@ -19,7 +19,7 @@ public class Doutor extends Pesquisador {
 		System.out.println(numMestreOrient);
 		System.out.println(numDoutorOrient);
 	}
-	
+
 	public void setGradOrient(int orient) {	
 		this.numGradOrient = orient;
 	}
@@ -28,6 +28,16 @@ public class Doutor extends Pesquisador {
 	}
 	public void setDoutOrient(int orient) {	
 		this.numDoutorOrient = orient;
+	}
+	
+	public int getGradOrient() {	
+		return this.numGradOrient;
+	}
+	public int getMestOrient() {	
+		return this.numMestreOrient;
+	}
+	public int getDoutOrient() {	
+		return this.numDoutorOrient;
 	}
 	
 	

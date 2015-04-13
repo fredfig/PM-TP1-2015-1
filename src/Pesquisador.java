@@ -23,15 +23,21 @@ public class Pesquisador {
 	}
 	
 	public void setHoraIniciacaoCientifica(int horas) {
-		
 		this.horaIniciacaoCientifica = horas;
-		
 	}
 	
 	public void setHoraEstagioDocencia(int horas) {
-		
 		this.horaEstagioDocencia = horas;
-		
+	}
+
+	public int getIdPesquisador(){
+		return this.idPesquisador;
+	}
+	public int getHorasIC(){
+		return this.horaIniciacaoCientifica;
+	}
+	public int getHorasED(){
+		return this.horaEstagioDocencia;
 	}
 	
 }

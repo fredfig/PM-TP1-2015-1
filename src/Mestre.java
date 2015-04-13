@@ -14,8 +14,10 @@ public class Mestre extends Pesquisador {
 	}
 
 	public void setGradOrient(int orient) {
-		
 		this.numGradOrient = orient;
-		
+	}
+	
+	public int getGradOrient(){
+		return this.numGradOrient;
 	}
 }
