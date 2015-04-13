@@ -3,24 +3,24 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Entrada {
-	
+public class Entrada {	
 	
 	public static void main(String[] args) {
-		
 		try {
 			ArrayList<Pesquisador> leia = leituraPesquisadoresEntrada();
-			for (Pesquisador pesquisador : leia) {
-				pesquisador.imprimePesquisador();
-			}
+//			for (Pesquisador pesquisador : leia) {
+//				pesquisador.imprimePesquisador();
+//			}
 			ArrayList<VeiculoPublicacao> leiaVP = leituraVeiculoPublicacaoEntrada();
-			for (VeiculoPublicacao vp : leiaVP) {
-				vp.imprimeVeiculoPublicacao();
-			}
+			ArrayList<Artigo> leiaA = leituraArtigosEntrada(leiaVP);
+//
+//			for (VeiculoPublicacao vp : leiaVP) {
+//				vp.imprimeVeiculoPublicacao();
+//			}
+			
 		} catch (IOException e) {
 			System.out.println(e);
 		}
-		
 	}
 	
 	// Metodo que faz a leitura de qualquer arquivo de entrada.
@@ -43,7 +43,8 @@ public class Entrada {
 		
 	}
 		
-	// Metodo que faz a leitura dos pesquisadores e retorna um array de Pesquisadores
+	// Metodo que faz a leitura dos pesquisadores
+	// Retorna um array de Pesquisadores
 	public static ArrayList<Pesquisador> leituraPesquisadoresEntrada() throws IOException {
 
 		ArrayList<Pesquisador> listaPesquisadores = new ArrayList<Pesquisador>();
@@ -86,7 +87,8 @@ public class Entrada {
 		
 	}
 
-	// Metodo que faz a leitura dos veículos de publiação e retorna um array de VeiculoPublicacao
+	// Metodo que faz a leitura dos veículos de publiação
+	// Retorna um array de VeiculoPublicacao
 	public static ArrayList<VeiculoPublicacao> leituraVeiculoPublicacaoEntrada() throws IOException {
 
 		ArrayList<VeiculoPublicacao> listaVP = new ArrayList<VeiculoPublicacao>();
@@ -97,8 +99,8 @@ public class Entrada {
 			VeiculoPublicacao vp = null;
 			System.out.println("Lendo veículos de publicação...");
 			while ((read = in.readLine()) != null){
-				System.out.println("Linha: " + read);
-				String[] pesq = read.split(";", 7);
+				//System.out.println("Linha: " + read);
+				String[] pesq = read.split(";", 2);
 				if(pesq[1].compareTo("R")==0){
 					vp = new Revista(Integer.parseInt(pesq[0]));
 				}
@@ -115,4 +117,38 @@ public class Entrada {
 		return listaVP;
 		
 	}
+
+	// Metodo que faz a leitura dos Artigos
+	// Retorna um array de Artigos
+	public static ArrayList<Artigo> leituraArtigosEntrada(ArrayList<VeiculoPublicacao> listaVP) throws IOException {
+
+		ArrayList<Artigo> listaA = new ArrayList<Artigo>();
+		
+		try {
+			BufferedReader in = new BufferedReader(new FileReader("entrada/artigos_veiculos.txt"));
+			String read;
+			Artigo a = null;
+			System.out.println("Lendo artigos...");
+			System.out.println("Adicionando artigos à veículos de publicação...");
+			while ((read = in.readLine()) != null){
+				//System.out.println("Linha: " + read);
+				String[] pesq = read.split(";", 2);
+				// Cria artigo com id único
+				a = new Artigo(Integer.parseInt(pesq[0]));
+				// Busca veículo de publicação deste artigo
+				VeiculoPublicacao v = VeiculoPublicacao.getVeiculo(listaVP, Integer.parseInt(pesq[1]));
+				// Adiciona ao veículo de publicação o artigo 
+				v.addArtigo(a);
+				listaA.add(a);
+			}
+			in.close();
+		} catch(IOException e) {
+			System.out.println(e);
+		}
+		
+		return listaA;
+		
+	}
+
+
 }
