@@ -16,6 +16,7 @@ public class Executa {
 			// Realiza a escrita dos arquivos com os resultados
 			Saida.escrevePopularidadePesquisador(listaPesquisadores);
 			Saida.escreveFatorImpacto(listaVeiculosPublicacao);
+			Saida.escrevePontuacaoArtigo(listaArtigos);
 			
 		} catch (IOException e) {
 			System.out.println(e);

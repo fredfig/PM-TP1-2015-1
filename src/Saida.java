@@ -6,12 +6,12 @@ import java.util.ArrayList;
 public class Saida {
 
 	// Metodo que faz a escrita do arquivo de popularidade dos pesquisadores
-	public static void escrevePopularidadePesquisador(ArrayList<Pesquisador> leiaP) throws IOException {
+	public static void escrevePopularidadePesquisador(ArrayList<Pesquisador> listaPesquisadores) throws IOException {
 		
 		try {
 			BufferedWriter out = new BufferedWriter(new FileWriter("saida/popularidade_pesquisador.txt"));
 			System.out.println("Escrevendo popularidade_pesquisador.txt...");
-			for (Pesquisador p: leiaP) {
+			for (Pesquisador p: listaPesquisadores) {
 				out.write(p.getIdPesquisador()+";"+String.format("%.4f", p.calculaPopularidade())+"\n");
 			}
 			out.close();
@@ -28,9 +28,23 @@ public class Saida {
 			BufferedWriter out = new BufferedWriter(new FileWriter("saida/fatorImpacto_veiculo.txt"));
 			System.out.println("Escrevendo fatorImpacto_veiculo.txt...");
 			for (VeiculoPublicacao vp: listaVeiculosPublicacao) {
-
 				out.write(vp.getId()+";"+String.format("%.4f", vp.calculaFatorImpacto())+"\n");
-								
+			}
+			out.close();
+		} catch(IOException e) {
+			System.out.println(e);
+		}
+				
+	}
+	
+	// Metodo que faz a escrita do arquivo de qualidade dos artigos
+	public static void escrevePontuacaoArtigo(ArrayList<Artigo> listaArtigos) throws IOException {
+		
+		try {
+			BufferedWriter out = new BufferedWriter(new FileWriter("saida/pontuacao_artigo.txt"));
+			System.out.println("Escrevendo pontuacao_artigo.txt...");
+			for (Artigo artigo: listaArtigos) {
+				out.write(artigo.getIdArtigo()+";"+String.format("%.4f", artigo.calculaPontuacaoArtigo())+"\n");
 			}
 			out.close();
 		} catch(IOException e) {

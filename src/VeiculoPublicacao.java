@@ -3,7 +3,6 @@ import java.util.ArrayList;
 public class VeiculoPublicacao { 
 
 	private int idVeiculoPublicacao;
-	//private double fatorDeImpacto;
 	private ArrayList<Artigo> artigos;
 	
 	public VeiculoPublicacao(int id) {
@@ -21,6 +20,7 @@ public class VeiculoPublicacao {
 	}
 	
 	public void addArtigo(Artigo a) {
+		a.setIdVP(getId());
 		this.artigos.add(a);
 	}
 	
@@ -28,7 +28,7 @@ public class VeiculoPublicacao {
 	public static VeiculoPublicacao getVeiculo(ArrayList<VeiculoPublicacao> vp, int idVeiculo) {
 		VeiculoPublicacao veiculo = null;
 		for (VeiculoPublicacao veiculoPublicacao : vp) {
-			if (veiculoPublicacao.getId()==idVeiculo) {
+			if (veiculoPublicacao.getId() == idVeiculo) {
 				veiculo = veiculoPublicacao;
 			}
 		}
