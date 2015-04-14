@@ -22,10 +22,10 @@ public class Artigo {
 	}
 
 	// Retorna o artigo com um id espec’fico a partir de um array de artigos
-	public static Artigo getArtigo(ArrayList<Artigo> listaA, int idArtigo){
+	public static Artigo getArtigo(ArrayList<Artigo> listaA, int idArtigo) {
 		Artigo artigo = null;
 		for (Artigo a : listaA) {
-			if (a.getIdArtigo()==idArtigo){
+			if (a.getIdArtigo() == idArtigo) {
 				artigo = a;
 			}
 		}

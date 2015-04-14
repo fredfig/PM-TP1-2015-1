@@ -7,15 +7,15 @@ public class Executa {
 	
 		try {
 			// Realiza a leitura dos arquivos de entrada
-			ArrayList<Pesquisador> leiaP = Entrada.leituraPesquisadoresEntrada();
-			ArrayList<VeiculoPublicacao> leiaVP = Entrada.leituraVeiculoPublicacaoEntrada();
-			ArrayList<Artigo> leiaA = Entrada.leituraArtigosEntrada(leiaVP);
-			Entrada.leituraArtigoPesquisadorEntrada(leiaP, leiaA);
-			Entrada.leituraArtigosCitacoesEntrada(leiaA);
+			ArrayList<Pesquisador> listaPesquisadores = Entrada.leituraPesquisadoresEntrada();
+			ArrayList<VeiculoPublicacao> listaVeiculosPublicacao = Entrada.leituraVeiculoPublicacaoEntrada();
+			ArrayList<Artigo> listaArtigos = Entrada.leituraArtigosEntrada(listaVeiculosPublicacao);
+			Entrada.leituraArtigoPesquisadorEntrada(listaPesquisadores, listaArtigos);
+			Entrada.leituraArtigosCitacoesEntrada(listaArtigos);
 			
 			// Realiza a escrita dos arquivos com os resultados
-			Saida.escrevePopularidadePesquisador(leiaP);
-			//Saida.escreveFatorImpacto();
+			Saida.escrevePopularidadePesquisador(listaPesquisadores);
+			Saida.escreveFatorImpacto(listaVeiculosPublicacao);
 			
 		} catch (IOException e) {
 			System.out.println(e);

@@ -4,4 +4,12 @@ public class Revista extends VeiculoPublicacao {
 		super(id);
 	}
 	
+	// Calcula o fator de impacto da revista
+	@Override
+	public double calculaFatorImpacto() {
+		double fatorImpacto = 0.0;
+		fatorImpacto = super.calculaFatorImpacto() + 2;
+		return fatorImpacto;
+	}
+	
 }

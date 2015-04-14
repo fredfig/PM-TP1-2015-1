@@ -41,4 +41,20 @@ public class VeiculoPublicacao {
 		}
 	}
 	
+	// Calcula o fator de impacto do veiculo de publicacao
+	public double calculaFatorImpacto() {
+		double fatorImpacto = 0.0;
+		fatorImpacto = (double)calculaCitacoes() / (double)artigos.size();
+		return fatorImpacto;
+	}
+	
+	// Calcula o somatorio do numero de citacoes de cada artigo presente em cada veiculo de publicacao
+	public int calculaCitacoes() {
+		int citacoes = 0;
+		for (Artigo a : artigos) {
+			citacoes += a.getCitacoes();
+		}
+		return citacoes;
+	}
+	
 }
