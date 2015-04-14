@@ -4,26 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Entrada {	
-	
-	// Metodo que faz a leitura de qualquer arquivo de entrada.
-	// Retorna um array de Strings com cada linha do arquivo de entrada.
-	public static String[] leituraArquivoEntrada(String arquivoEntrada) throws IOException {
-		
-		String[] linhas = null;
-		
-		try {
-			BufferedReader in = new BufferedReader(new FileReader("entrada/" + arquivoEntrada));
-			String read;
-			while ((read = in.readLine()) != null)
-				System.out.println("Linha: " + read);
-			in.close();
-		} catch(IOException e) {
-			System.out.println(e);
-		}
-		
-		return linhas;
-		
-	}
 		
 	// Metodo que faz a leitura dos pesquisadores
 	// Retorna um array de Pesquisadores
@@ -36,21 +16,21 @@ public class Entrada {
 			String read;
 			Pesquisador p = null;
 			System.out.println("Lendo pesquisadores...");
-			while ((read = in.readLine()) != null){
+			while ((read = in.readLine()) != null) {
 				//System.out.println("Linha: " + read);
 				String[] pesq = read.split(";", 7);
-				if(pesq[1].compareTo("G")==0){
+				if(pesq[1].compareTo("G") == 0) {
 					p = new Graduado(Integer.parseInt(pesq[0]),
 									 Integer.parseInt(pesq[2]),
 									 Integer.parseInt(pesq[3]));
 				}
-				else if(pesq[1].compareTo("M")==0){
+				else if(pesq[1].compareTo("M") == 0){
 					p = new Mestre(Integer.parseInt(pesq[0]),
 								   Integer.parseInt(pesq[2]),
 								   Integer.parseInt(pesq[3]),
 								   Integer.parseInt(pesq[4]));
 				}
-				else if(pesq[1].compareTo("D")==0){
+				else if(pesq[1].compareTo("D") == 0){
 					p = new Doutor(Integer.parseInt(pesq[0]),
 								   Integer.parseInt(pesq[2]),
 								   Integer.parseInt(pesq[3]),
@@ -83,10 +63,10 @@ public class Entrada {
 			while ((read = in.readLine()) != null){
 				//System.out.println("Linha: " + read);
 				String[] pesq = read.split(";", 2);
-				if(pesq[1].compareTo("R")==0){
+				if(pesq[1].compareTo("R") == 0){
 					vp = new Revista(Integer.parseInt(pesq[0]));
 				}
-				else if(pesq[1].compareTo("C")==0){
+				else if(pesq[1].compareTo("C") == 0){
 					vp = new Conferencia(Integer.parseInt(pesq[0]));
 				}
 				listaVP.add(vp);
@@ -159,9 +139,7 @@ public class Entrada {
 			System.out.println(e);
 		}
 		
-		
 	}
-
 
 	// Metodo que faz a leitura dos Artigos e suas citações
 	// Cada artigo é citado por outro artigo.
@@ -180,15 +158,12 @@ public class Entrada {
 				Artigo a = Artigo.getArtigo(listaA, Integer.parseInt(pesq[0]));
 				// Adiciona ao artigo uma citação
 				a.addCitacao();
-			
 			}
 			in.close();
 		} catch(IOException e) {
 			System.out.println(e);
 		}
-		
-		
+				
 	}
-
 
 }

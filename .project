@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>saida/popularidade_pesquisador.txt</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Programa%C3%A7%C3%A3o%20Modular/PM-TP1-2015-1/saida/popularidade_pesquisador.txt</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>

@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class VeiculoPublicacao { 
 
 	private int idVeiculoPublicacao;
+	//private double fatorDeImpacto;
 	private ArrayList<Artigo> artigos;
 	
 	public VeiculoPublicacao(int id) {
