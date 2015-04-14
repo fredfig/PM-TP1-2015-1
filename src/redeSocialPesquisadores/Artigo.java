@@ -1,4 +1,5 @@
 package redeSocialPesquisadores;
+
 import java.util.ArrayList;
 
 public class Artigo { 

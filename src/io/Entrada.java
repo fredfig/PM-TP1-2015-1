@@ -1,4 +1,5 @@
 package io;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -27,7 +28,6 @@ public class Entrada {
 			Pesquisador p = null;
 			System.out.println("Lendo pesquisadores...");
 			while ((read = in.readLine()) != null) {
-				//System.out.println("Linha: " + read);
 				String[] pesq = read.split(";", 7);
 				if(pesq[1].compareTo("G") == 0) {
 					p = new Graduado(Integer.parseInt(pesq[0]),
@@ -125,7 +125,7 @@ public class Entrada {
 	// Metodo que faz a leitura dos Artigos relacionado ao pesquisador.
 	// Cada artigo indica qual Ž o autor do artigo e sua ordem de autoria
 	// Retorna vazio
-	public static void leituraArtigoPesquisadorEntrada(ArrayList<Pesquisador> listaP,ArrayList<Artigo> listaA) throws IOException {
+	public static void leituraArtigoPesquisadorEntrada(ArrayList<Pesquisador> listaP, ArrayList<Artigo> listaA) throws IOException {
 
 		try {
 			BufferedReader in = new BufferedReader(new FileReader("entrada/grafo_artigos_pesquisadores.txt"));

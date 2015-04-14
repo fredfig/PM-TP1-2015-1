@@ -10,7 +10,7 @@ import redeSocialPesquisadores.VeiculoPublicacao;
 
 public class MainClass {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 	
 		try {
 			// Realiza a leitura dos arquivos de entrada
@@ -28,7 +28,7 @@ public class MainClass {
 		} catch (IOException e) {
 			System.out.println(e);
 		}
+		
 	}
-	
 
 }

@@ -1,4 +1,5 @@
 package redeSocialPesquisadores;
+
 public class Revista extends VeiculoPublicacao {
 
 	public Revista(int id) {

@@ -1,4 +1,5 @@
 package redeSocialPesquisadores;
+
 public class Mestre extends Pesquisador {
 
 	private int numGradOrient;
@@ -22,7 +23,7 @@ public class Mestre extends Pesquisador {
 		return this.numGradOrient;
 	}
 
-	// Calcula popularidade do graduado
+	// Calcula popularidade do mestre
 	@Override
 	public double calculaPopularidade() {
 		double popularidade = 0.0;
