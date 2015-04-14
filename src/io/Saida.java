@@ -1,7 +1,12 @@
+package io;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import redeSocialPesquisadores.Artigo;
+import redeSocialPesquisadores.Pesquisador;
+import redeSocialPesquisadores.VeiculoPublicacao;
 
 public class Saida {
 

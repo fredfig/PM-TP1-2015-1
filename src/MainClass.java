@@ -1,7 +1,14 @@
+import io.Entrada;
+import io.Saida;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Executa {
+import redeSocialPesquisadores.Artigo;
+import redeSocialPesquisadores.Pesquisador;
+import redeSocialPesquisadores.VeiculoPublicacao;
+
+public class MainClass {
 
 	public static void main(String[] args) {
 	

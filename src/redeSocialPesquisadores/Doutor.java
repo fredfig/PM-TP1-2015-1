@@ -1,3 +1,4 @@
+package redeSocialPesquisadores;
 public class Doutor extends Pesquisador {
 
 	private int numGradOrient;

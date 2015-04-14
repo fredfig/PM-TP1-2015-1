@@ -1,3 +1,4 @@
+package redeSocialPesquisadores;
 public class Conferencia extends VeiculoPublicacao {
 
 	public Conferencia(int id) {

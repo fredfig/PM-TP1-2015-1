@@ -1,7 +1,17 @@
+package io;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import redeSocialPesquisadores.Artigo;
+import redeSocialPesquisadores.Conferencia;
+import redeSocialPesquisadores.Doutor;
+import redeSocialPesquisadores.Graduado;
+import redeSocialPesquisadores.Mestre;
+import redeSocialPesquisadores.Pesquisador;
+import redeSocialPesquisadores.Revista;
+import redeSocialPesquisadores.VeiculoPublicacao;
 
 public class Entrada {	
 		
