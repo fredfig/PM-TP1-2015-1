@@ -38,13 +38,13 @@ public class Saida {
 	}
 	
 	// Metodo que faz a escrita do arquivo de qualidade dos artigos
-	public static void escrevePontuacaoArtigo(ArrayList<Artigo> listaArtigos) throws IOException {
+	public static void escrevePontuacaoArtigo(ArrayList<Artigo> listaArtigos, ArrayList<VeiculoPublicacao> listaVeiculosPublicacao) throws IOException {
 		
 		try {
 			BufferedWriter out = new BufferedWriter(new FileWriter("saida/pontuacao_artigo.txt"));
 			System.out.println("Escrevendo pontuacao_artigo.txt...");
 			for (Artigo artigo: listaArtigos) {
-				out.write(artigo.getIdArtigo()+";"+String.format("%.4f", artigo.calculaPontuacaoArtigo())+"\n");
+				out.write(artigo.getIdArtigo()+";"+String.format("%.4f", artigo.calculaPontuacaoArtigo(listaVeiculosPublicacao))+"\n");
 			}
 			out.close();
 		} catch(IOException e) {

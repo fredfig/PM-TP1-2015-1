@@ -42,9 +42,9 @@ public class Artigo {
 	}
 	
 	// Calcula a pontuacao do artigo
-	public double calculaPontuacaoArtigo() {
+	public double calculaPontuacaoArtigo(ArrayList<VeiculoPublicacao> listaVeiculosPublicacao) {
 		double pontuacaoArtigo = 0.0;
-		pontuacaoArtigo = /*(double)fatorImpacto() * */ (double)getCitacoes();
+		pontuacaoArtigo = (double)VeiculoPublicacao.getVeiculo(listaVeiculosPublicacao, this.getIdVP()).calculaFatorImpacto() * (double)getCitacoes();
 		return pontuacaoArtigo;
 	}
 	
