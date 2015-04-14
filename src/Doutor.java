@@ -4,7 +4,6 @@ public class Doutor extends Pesquisador {
 	private int numMestreOrient;
 	private int numDoutorOrient;
 	
-
 	public Doutor(int id, int horasIC, int horasED, int alunosGrad, int alunosMestre, int alunosDoutor) {
 		super(id,horasIC,horasED);
 		this.setGradOrient(alunosGrad);
@@ -13,7 +12,7 @@ public class Doutor extends Pesquisador {
 	}
 
 	@Override
-	public void imprimePesquisador(){
+	public void imprimePesquisador() {
 		super.imprimePesquisador();
 		System.out.println(numGradOrient);
 		System.out.println(numMestreOrient);
@@ -44,18 +43,15 @@ public class Doutor extends Pesquisador {
 
 	// Calcula popularidade do graduado
 	@Override
-	public double calculaPopularidade(){
-		double popularidade=0.0;
-		
+	public double calculaPopularidade() {
+		double popularidade = 0.0;
 		popularidade = super.calculaPopularidade() 
-					 + (double)this.horaIniciacaoCientifica 
-					 + (double)this.horaEstagioDocencia 
+					 + (double)getHorasIC() 
+					 + (double)getHorasED() 
 					 + (double)10*this.numGradOrient
 					 + (double)20*this.numMestreOrient
 					 + (double)30*this.numDoutorOrient;
-		
 		return popularidade;
-	
 	}
 	
 }

@@ -5,24 +5,6 @@ import java.util.ArrayList;
 
 public class Entrada {	
 	
-	public static void main(String[] args) {
-		try {
-			ArrayList<Pesquisador> leiaP = leituraPesquisadoresEntrada();
-			ArrayList<VeiculoPublicacao> leiaVP = leituraVeiculoPublicacaoEntrada();
-			ArrayList<Artigo> leiaA = leituraArtigosEntrada(leiaVP);
-			leituraArtigoPesquisadorEntrada(leiaP, leiaA);
-			leituraArtigosCitacoesEntrada(leiaA);
-			
-			for (Pesquisador p: leiaP) {
-				//p.imprimePesquisador();
-				System.out.println(p.getIdPesquisador()+";"+String.format("%.4f", p.calculaPopularidade()));
-			}
-			
-		} catch (IOException e) {
-			System.out.println(e);
-		}
-	}
-	
 	// Metodo que faz a leitura de qualquer arquivo de entrada.
 	// Retorna um array de Strings com cada linha do arquivo de entrada.
 	public static String[] leituraArquivoEntrada(String arquivoEntrada) throws IOException {

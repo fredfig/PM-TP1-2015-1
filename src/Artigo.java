@@ -3,21 +3,21 @@ import java.util.ArrayList;
 public class Artigo { 
 
 	private int idArtigo;
-	private int numCitacao=0;
+	private int numCitacao = 0;
 	
-	public Artigo (int id){
+	public Artigo (int id) {
 		this.idArtigo = id;
 	}
 	
-	public int getIdArtigo(){
+	public int getIdArtigo() {
 		return this.idArtigo;
 	}
 	
-	public int getCitacoes(){
+	public int getCitacoes() {
 		return this.numCitacao;
 	}
 	
-	public void addCitacao(){
+	public void addCitacao() {
 		this.numCitacao++;
 	}
 
@@ -31,4 +31,5 @@ public class Artigo {
 		}
 		return artigo;
 	}
+	
 }

@@ -6,16 +6,15 @@ public class Graduado extends Pesquisador {
 
 	// Calcula popularidade do graduado
 	@Override
-	public double calculaPopularidade(){
-		double popularidade=0.0;
+	public double calculaPopularidade() {
+		double popularidade = 0.0;
 		
 		popularidade = super.calculaPopularidade() 
-					 + (double)this.horaIniciacaoCientifica 
-					 + (double)this.horaEstagioDocencia;
+					 + (double)getHorasIC() 
+					 + (double)getHorasED();
 		
 		return popularidade;
 	
 	}
-	
 	
 }

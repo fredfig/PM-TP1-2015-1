@@ -8,7 +8,7 @@ public class Mestre extends Pesquisador {
 	}
 	
 	@Override
-	public void imprimePesquisador(){
+	public void imprimePesquisador() {
 		super.imprimePesquisador();
 		System.out.println(numGradOrient);
 	}
@@ -17,21 +17,19 @@ public class Mestre extends Pesquisador {
 		this.numGradOrient = orient;
 	}
 	
-	public int getGradOrient(){
+	public int getGradOrient() {
 		return this.numGradOrient;
 	}
 
 	// Calcula popularidade do graduado
 	@Override
-	public double calculaPopularidade(){
-		double popularidade=0.0;
-		
+	public double calculaPopularidade() {
+		double popularidade = 0.0;
 		popularidade = super.calculaPopularidade() 
-					 + (double)this.horaIniciacaoCientifica 
-					 + (double)this.horaEstagioDocencia 
+					 + (double)getHorasIC() 
+					 + (double)getHorasED() 
 					 + (double)10*this.numGradOrient;
-		
 		return popularidade;
-	
 	}
+	
 }

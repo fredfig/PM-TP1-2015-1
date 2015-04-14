@@ -3,11 +3,9 @@ import java.util.Hashtable;
 
 public class Pesquisador { 
 
-	private static int numPesquisadores = 0;
-	
-	protected int idPesquisador;
-	protected int horaIniciacaoCientifica = 0;
-	protected int horaEstagioDocencia = 0;
+	private int idPesquisador;
+	private int horaIniciacaoCientifica = 0;
+	private int horaEstagioDocencia = 0;
 	
 	private Hashtable<Integer, Integer> artigoAutoria;
 	private ArrayList<Artigo> listaArtigos;
@@ -15,14 +13,12 @@ public class Pesquisador {
 	public Pesquisador(int id, int horasIC, int horasED) {
 		listaArtigos = new ArrayList<Artigo>();
 		artigoAutoria = new Hashtable<Integer, Integer>();
-		numPesquisadores++;
 		this.idPesquisador = id;
 		this.setHoraIniciacaoCientifica(horasIC);
 		this.setHoraEstagioDocencia(horasED); 
-		
 	}
 	
-	public void imprimePesquisador(){
+	public void imprimePesquisador() {
 		System.out.println(idPesquisador);
 		System.out.println(horaIniciacaoCientifica);
 		System.out.println(horaEstagioDocencia);
@@ -52,25 +48,25 @@ public class Pesquisador {
 		this.listaArtigos.add(a);
 	}
 	
-	public void addArtigoAutoria(int idArtigo, int ordemAutoria){
+	public void addArtigoAutoria(int idArtigo, int ordemAutoria) {
 		this.artigoAutoria.put(idArtigo, ordemAutoria);
 	}
 
-	public void imprimeArtigoAutoria(){
+	public void imprimeArtigoAutoria() {
 		for (Integer artigo : this.artigoAutoria.keySet()) {
 			System.out.println(artigo + " " + this.artigoAutoria.get(artigo));
 		}
 	}
 	
-	public int artigosPublicados(){
+	public int artigosPublicados() {
 		return listaArtigos.size();
 	}
 	
 	// Retorna o pesquisador com um id específico a partir de um array de pesquisadores
-	public static Pesquisador getPesquisador(ArrayList<Pesquisador> listaP, int idPesquisador){
+	public static Pesquisador getPesquisador(ArrayList<Pesquisador> listaP, int idPesquisador) {
 		Pesquisador pesquisador = null;
 		for (Pesquisador p : listaP) {
-			if (p.getIdPesquisador()==idPesquisador){
+			if (p.getIdPesquisador() == idPesquisador){
 				pesquisador = p;
 			}
 		}
@@ -79,35 +75,28 @@ public class Pesquisador {
 	
 	// Calcular peso de importância do pesquisador
 	// Na documentação é referenciado como w(p)
-	public double calculaPesoImportancia(){
-		double pesoImportancia=0.0;
-		
+	public double calculaPesoImportancia() {
+		double pesoImportancia = 0.0;
 		for (Integer artigo : artigoAutoria.keySet()) {
 			pesoImportancia += 1/(double)artigoAutoria.get(artigo);
 		}
-		
 		return pesoImportancia;
 	}
 	
 	// Calcula o número de vezes que os artigos do pesquisador foram citados
 	public int totalCitacoes(){
-		int citacoes=0;
-
+		int citacoes = 0;
 		for (Artigo a : this.listaArtigos) {
-			citacoes+=a.getCitacoes();
+			citacoes += a.getCitacoes();
 		}
 		return citacoes;
-		
 	}
 	
 	// Calcula popularidade do pesquisador
-	public double calculaPopularidade(){
-		double popularidade=0.0;
-		
+	public double calculaPopularidade() {
+		double popularidade = 0.0;
 		popularidade = calculaPesoImportancia() + (double)totalCitacoes() + (double)artigosPublicados();
-		
 		return popularidade;
-	
 	}
 	
 }

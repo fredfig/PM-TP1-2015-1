@@ -1,6 +1,6 @@
 public class Conferencia extends VeiculoPublicacao {
 
-	public Conferencia(int id){
+	public Conferencia(int id) {
 		super(id);
 	}
 	
