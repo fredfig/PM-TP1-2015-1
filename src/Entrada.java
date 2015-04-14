@@ -129,9 +129,9 @@ public class Entrada {
 				Pesquisador p = Pesquisador.getPesquisador(listaP, Integer.parseInt(pesq[1]));
 				Artigo a = Artigo.getArtigo(listaA, Integer.parseInt(pesq[0]));
 				// Adiciona ao pesquisador o artigo e sua ordem de autoria 
-				p.addArtigoAutoria(Integer.parseInt(pesq[0]), Integer.parseInt(pesq[2]));
+				p.addArtigoAutoria(a, Integer.parseInt(pesq[2]));
 				// Adiciona ao pesquisador um artigo
-				p.addArtigo(a);
+				//p.addArtigo(a);
 			
 			}
 			in.close();

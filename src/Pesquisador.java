@@ -7,12 +7,11 @@ public class Pesquisador {
 	private int horaIniciacaoCientifica = 0;
 	private int horaEstagioDocencia = 0;
 	
-	private Hashtable<Integer, Integer> artigoAutoria;
-	private ArrayList<Artigo> listaArtigos;
-    
+	// Armazena o artigo e a ordem de autoria do pesquisador.
+	private Hashtable<Artigo, Integer> artigoAutoria;
+
 	public Pesquisador(int id, int horasIC, int horasED) {
-		listaArtigos = new ArrayList<Artigo>();
-		artigoAutoria = new Hashtable<Integer, Integer>();
+		artigoAutoria = new Hashtable<Artigo, Integer>();
 		this.idPesquisador = id;
 		this.setHoraIniciacaoCientifica(horasIC);
 		this.setHoraEstagioDocencia(horasED); 
@@ -44,22 +43,18 @@ public class Pesquisador {
 		return this.horaEstagioDocencia;
 	}
 	
-	public void addArtigo(Artigo a){
-		this.listaArtigos.add(a);
-	}
-	
-	public void addArtigoAutoria(int idArtigo, int ordemAutoria) {
-		this.artigoAutoria.put(idArtigo, ordemAutoria);
+	public void addArtigoAutoria(Artigo a, int ordemAutoria) {
+		this.artigoAutoria.put(a, ordemAutoria);
 	}
 
 	public void imprimeArtigoAutoria() {
-		for (Integer artigo : this.artigoAutoria.keySet()) {
-			System.out.println(artigo + " " + this.artigoAutoria.get(artigo));
+		for (Artigo artigo : this.artigoAutoria.keySet()) {
+			System.out.println(artigo.getIdArtigo() + " " + this.artigoAutoria.get(artigo));
 		}
 	}
 	
 	public int artigosPublicados() {
-		return listaArtigos.size();
+		return artigoAutoria.size();
 	}
 	
 	// Retorna o pesquisador com um id específico a partir de um array de pesquisadores
@@ -77,7 +72,7 @@ public class Pesquisador {
 	// Na documentação é referenciado como w(p)
 	public double calculaPesoImportancia() {
 		double pesoImportancia = 0.0;
-		for (Integer artigo : artigoAutoria.keySet()) {
+		for (Artigo artigo : artigoAutoria.keySet()) {
 			pesoImportancia += 1/(double)artigoAutoria.get(artigo);
 		}
 		return pesoImportancia;
@@ -86,7 +81,7 @@ public class Pesquisador {
 	// Calcula o número de vezes que os artigos do pesquisador foram citados
 	public int totalCitacoes(){
 		int citacoes = 0;
-		for (Artigo a : this.listaArtigos) {
+		for (Artigo a : artigoAutoria.keySet()) {
 			citacoes += a.getCitacoes();
 		}
 		return citacoes;
