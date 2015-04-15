@@ -12,6 +12,18 @@ CLASSES = \
 	$(wildcard *.java)\
 	$(wildcard redeSocialPesquisadores/*.java)\
 	$(wildcard io/*.java)\
+	
+ARGSIN = \
+	../entrada/pesquisadores.txt\
+	../entrada/veiculos.txt\
+	../entrada/artigos_veiculos.txt\
+	../entrada/grafo_artigos_pesquisadores.txt\
+	../entrada/grafo_citacoes.txt\
+	
+ARGSOUT = \
+	../saida/popularidade_pesquisador.txt\
+	../saida/fatorImpacto_veiculo.txt\
+	../saida/pontuacao_artigo.txt\
 
 default: classes
 
@@ -22,4 +34,4 @@ clean:
 	$(RM) *.class
 
 run : classes
-	$(JCR) MainClass
+	$(JCR) MainClass $(ARGSIN) $(ARGSOUT)

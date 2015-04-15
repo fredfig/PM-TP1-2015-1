@@ -18,15 +18,15 @@ public class Entrada {
 		
 	// Metodo que faz a leitura dos pesquisadores
 	// Retorna um array de Pesquisadores
-	public static ArrayList<Pesquisador> leituraPesquisadoresEntrada() throws IOException {
+	public static ArrayList<Pesquisador> leituraPesquisadoresEntrada(String nomeArquivoEntrada) throws IOException {
 
 		ArrayList<Pesquisador> listaPesquisadores = new ArrayList<Pesquisador>();
 		
 		try {
-			BufferedReader in = new BufferedReader(new FileReader("../entrada/pesquisadores.txt"));
+			BufferedReader in = new BufferedReader(new FileReader(nomeArquivoEntrada));
 			String read;
 			Pesquisador p = null;
-			System.out.println("Lendo pesquisadores...");
+			System.out.println("Lendo pesquisadores.");
 			while ((read = in.readLine()) != null) {
 				String[] pesq = read.split(";", 7);
 				if(pesq[1].compareTo("G") == 0) {
@@ -61,15 +61,15 @@ public class Entrada {
 
 	// Metodo que faz a leitura dos veículos de publiação
 	// Retorna um array de VeiculoPublicacao
-	public static ArrayList<VeiculoPublicacao> leituraVeiculoPublicacaoEntrada() throws IOException {
+	public static ArrayList<VeiculoPublicacao> leituraVeiculoPublicacaoEntrada(String nomeArquivoEntrada) throws IOException {
 
 		ArrayList<VeiculoPublicacao> listaVP = new ArrayList<VeiculoPublicacao>();
 		
 		try {
-			BufferedReader in = new BufferedReader(new FileReader("../entrada/veiculos.txt"));
+			BufferedReader in = new BufferedReader(new FileReader(nomeArquivoEntrada));
 			String read;
 			VeiculoPublicacao vp = null;
-			System.out.println("Lendo veículos de publicação...");
+			System.out.println("Lendo veiculos de publicacao.");
 			while ((read = in.readLine()) != null){
 				//System.out.println("Linha: " + read);
 				String[] pesq = read.split(";", 2);
@@ -92,16 +92,16 @@ public class Entrada {
 
 	// Metodo que faz a leitura dos Artigos
 	// Retorna um array de Artigos
-	public static ArrayList<Artigo> leituraArtigosEntrada(ArrayList<VeiculoPublicacao> listaVP) throws IOException {
+	public static ArrayList<Artigo> leituraArtigosEntrada(ArrayList<VeiculoPublicacao> listaVP, String nomeArquivoEntrada) throws IOException {
 
 		ArrayList<Artigo> listaA = new ArrayList<Artigo>();
 		
 		try {
-			BufferedReader in = new BufferedReader(new FileReader("../entrada/artigos_veiculos.txt"));
+			BufferedReader in = new BufferedReader(new FileReader(nomeArquivoEntrada));
 			String read;
 			Artigo a = null;
-			System.out.println("Lendo artigos...");
-			System.out.println("Adicionando artigos à veículos de publicação...");
+			System.out.println("Lendo artigos.");
+			System.out.println("Adicionando artigos a veiculos de publicacao.");
 			while ((read = in.readLine()) != null){
 				//System.out.println("Linha: " + read);
 				String[] pesq = read.split(";", 2);
@@ -125,13 +125,13 @@ public class Entrada {
 	// Metodo que faz a leitura dos Artigos relacionado ao pesquisador.
 	// Cada artigo indica qual é o autor do artigo e sua ordem de autoria
 	// Retorna vazio
-	public static void leituraArtigoPesquisadorEntrada(ArrayList<Pesquisador> listaP, ArrayList<Artigo> listaA) throws IOException {
+	public static void leituraArtigoPesquisadorEntrada(ArrayList<Pesquisador> listaP, ArrayList<Artigo> listaA, String nomeArquivoEntrada) throws IOException {
 
 		try {
-			BufferedReader in = new BufferedReader(new FileReader("../entrada/grafo_artigos_pesquisadores.txt"));
+			BufferedReader in = new BufferedReader(new FileReader(nomeArquivoEntrada));
 			String read;
-			System.out.println("Lendo artigos x pesquisadores...");
-			System.out.println("Associando artigos aos pesquisadores considerando ordem de autoria...");
+			System.out.println("Lendo relacao artigos x pesquisadores.");
+			System.out.println("Associando artigos aos pesquisadores considerando ordem de autoria.");
 			while ((read = in.readLine()) != null){
 				//System.out.println("Linha: " + read);
 				String[] pesq = read.split(";", 3);
@@ -154,13 +154,13 @@ public class Entrada {
 	// Metodo que faz a leitura dos Artigos e suas citações
 	// Cada artigo é citado por outro artigo.
 	// Retorna vazio
-	public static void leituraArtigosCitacoesEntrada(ArrayList<Artigo> listaA) throws IOException {
+	public static void leituraArtigosCitacoesEntrada(ArrayList<Artigo> listaA, String nomeArquivoEntrada) throws IOException {
 
 		try {
-			BufferedReader in = new BufferedReader(new FileReader("../entrada/grafo_citacoes.txt"));
+			BufferedReader in = new BufferedReader(new FileReader(nomeArquivoEntrada));
 			String read;
-			System.out.println("Lendo artigos e suas citações...");
-			System.out.println("Incrementando contador de citações de cada artigo...");
+			System.out.println("Lendo artigos e suas citacoes.");
+			System.out.println("Incrementando contador de citacoes de cada artigo.");
 			while ((read = in.readLine()) != null){
 				//System.out.println("Linha: " + read);
 				String[] pesq = read.split(";", 2);
