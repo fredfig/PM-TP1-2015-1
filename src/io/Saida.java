@@ -15,7 +15,7 @@ public class Saida {
 	public static void escrevePopularidadePesquisador(ArrayList<Pesquisador> listaPesquisadores) throws IOException {
 		
 		try {
-			BufferedWriter out = new BufferedWriter(new FileWriter("saida/popularidade_pesquisador.txt"));
+			BufferedWriter out = new BufferedWriter(new FileWriter("../saida/popularidade_pesquisador.txt"));
 			System.out.println("Escrevendo popularidade_pesquisador.txt...");
 			for (Pesquisador p: listaPesquisadores) {
 				out.write(p.getIdPesquisador()+";"+String.format("%.4f", p.calculaPopularidade())+"\n");
@@ -31,7 +31,7 @@ public class Saida {
 	public static void escreveFatorImpacto(ArrayList<VeiculoPublicacao> listaVeiculosPublicacao) throws IOException {
 		
 		try {
-			BufferedWriter out = new BufferedWriter(new FileWriter("saida/fatorImpacto_veiculo.txt"));
+			BufferedWriter out = new BufferedWriter(new FileWriter("../saida/fatorImpacto_veiculo.txt"));
 			System.out.println("Escrevendo fatorImpacto_veiculo.txt...");
 			for (VeiculoPublicacao vp: listaVeiculosPublicacao) {
 				out.write(vp.getId()+";"+String.format("%.4f", vp.calculaFatorImpacto())+"\n");
@@ -47,7 +47,7 @@ public class Saida {
 	public static void escrevePontuacaoArtigo(ArrayList<Artigo> listaArtigos, ArrayList<VeiculoPublicacao> listaVeiculosPublicacao) throws IOException {
 		
 		try {
-			BufferedWriter out = new BufferedWriter(new FileWriter("saida/pontuacao_artigo.txt"));
+			BufferedWriter out = new BufferedWriter(new FileWriter("../saida/pontuacao_artigo.txt"));
 			System.out.println("Escrevendo pontuacao_artigo.txt...");
 			for (Artigo artigo: listaArtigos) {
 				out.write(artigo.getIdArtigo()+";"+String.format("%.4f", artigo.calculaPontuacaoArtigo(listaVeiculosPublicacao))+"\n");

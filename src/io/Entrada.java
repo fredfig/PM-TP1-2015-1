@@ -23,7 +23,7 @@ public class Entrada {
 		ArrayList<Pesquisador> listaPesquisadores = new ArrayList<Pesquisador>();
 		
 		try {
-			BufferedReader in = new BufferedReader(new FileReader("entrada/pesquisadores.txt"));
+			BufferedReader in = new BufferedReader(new FileReader("../entrada/pesquisadores.txt"));
 			String read;
 			Pesquisador p = null;
 			System.out.println("Lendo pesquisadores...");
@@ -66,7 +66,7 @@ public class Entrada {
 		ArrayList<VeiculoPublicacao> listaVP = new ArrayList<VeiculoPublicacao>();
 		
 		try {
-			BufferedReader in = new BufferedReader(new FileReader("entrada/veiculos.txt"));
+			BufferedReader in = new BufferedReader(new FileReader("../entrada/veiculos.txt"));
 			String read;
 			VeiculoPublicacao vp = null;
 			System.out.println("Lendo veículos de publicação...");
@@ -97,7 +97,7 @@ public class Entrada {
 		ArrayList<Artigo> listaA = new ArrayList<Artigo>();
 		
 		try {
-			BufferedReader in = new BufferedReader(new FileReader("entrada/artigos_veiculos.txt"));
+			BufferedReader in = new BufferedReader(new FileReader("../entrada/artigos_veiculos.txt"));
 			String read;
 			Artigo a = null;
 			System.out.println("Lendo artigos...");
@@ -128,7 +128,7 @@ public class Entrada {
 	public static void leituraArtigoPesquisadorEntrada(ArrayList<Pesquisador> listaP, ArrayList<Artigo> listaA) throws IOException {
 
 		try {
-			BufferedReader in = new BufferedReader(new FileReader("entrada/grafo_artigos_pesquisadores.txt"));
+			BufferedReader in = new BufferedReader(new FileReader("../entrada/grafo_artigos_pesquisadores.txt"));
 			String read;
 			System.out.println("Lendo artigos x pesquisadores...");
 			System.out.println("Associando artigos aos pesquisadores considerando ordem de autoria...");
@@ -157,7 +157,7 @@ public class Entrada {
 	public static void leituraArtigosCitacoesEntrada(ArrayList<Artigo> listaA) throws IOException {
 
 		try {
-			BufferedReader in = new BufferedReader(new FileReader("entrada/grafo_citacoes.txt"));
+			BufferedReader in = new BufferedReader(new FileReader("../entrada/grafo_citacoes.txt"));
 			String read;
 			System.out.println("Lendo artigos e suas citações...");
 			System.out.println("Incrementando contador de citações de cada artigo...");
